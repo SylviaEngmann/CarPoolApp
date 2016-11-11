@@ -47,7 +47,7 @@
         /**
         * callback function for add user method
         */
-        function viewPoolComplete(xhr,status){
+        function joinPoolComplete(xhr,status){
             if(status!="success"){
                 pools.innerHTML = "error fetching pool";
                 return;
@@ -71,8 +71,8 @@
             currentObject=null;
 
         }
-    function viewPool(){
-            $.ajax("http://52.89.116.249/~sylvia.engmann/ridealong/viewpools.php",
+    function joinPool(){
+            $.ajax("http://52.89.116.249/~sylvia.engmann/ridealong/joinpool.php",
                 {async:true,complete:viewPoolComplete   });
             }
 
