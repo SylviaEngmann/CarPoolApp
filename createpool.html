@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+        <title> Ride Along!</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/form-elements.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+
+    <body>
+    <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                <a class="navbar-brand" href="userpage.html">Back<span class="glyphicon glyphicon-circle-arrow-left"></span></a>
+                  <a class="navbar-brand" href="userpage.html"> Home <span class="glyphicon glyphicon-home"></span></a>
+                  <a class="navbar-brand" href="index.html"> Log out <span class="glyphicon glyphicon-log-out"></span></a>
+                </div>
+                </div>
+            </nav>
+        <!-- Top content -->
+        <div class="top-content">
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                        <br><br>
+                            <h1><strong>Ride Along!</strong></h1>
+                            <div class="description">
+                                <p><strong>Create a new Pool</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                            <div class="form-bottom">
+                                <form role="form" action="createpool.php" method="GET" class="pool-form">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="poolid">Pool ID</label>
+                                        <input type="number" name="poolid" placeholder="Pool ID.." class="poolid form-control" id="poolid">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="departure">From : </label>
+                                         <input type="text" name="departure" placeholder="Place of departure" class="departure form-control" id="departure">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Destination</label>
+                                        <select name = "places" id ="places">
+                                            <option value="abuom">Abuom Junction</option>
+                                            <option value="kwabenya">Kwabenya</option>
+                                            <option value="haatso">Haatso</option>
+                                            <option value="atomic">Atomic Junction</option>
+                                            <option value="accramall">Accra Mall</option>
+                                            <option value="osu">Osu</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label >Number of People Needed</label>
+                                        <input type="number" name="number" placeholder="Please enter a number between 1 and 5.." class="number form-control" id="number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="datedetails">Date/Time</label>
+                                        <input type="datetime-local" name="datedetails" class="datedetails form-control" id="datedetails">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="price">Price</label>
+                                        <input type="number" name="amount" placeholder="Total Cost GHC..." class="amount form-control" id="amount">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="creator">Creator</label>
+                                        <input type="text" name="creator" placeholder="Creator" class="creator form-control" id="creator">
+                                    </div>
+                                </form>
+                            </div>
+                                <button onclick= "createPool()" class="btn" >Create the Pool</button>
+                        </div>
+                    </div>
+            </div>
+            
+        </div>
+</div>
+
+
+        <!-- Javascript -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/npm.js"></script>
+        <script src="js/placeholder.js"></script>
+        <script src="js/scripts.js"></script>
+
+        <script type="text/javascript">
+            var currentObject=null;
+        /**
+        * callback function for add user method
+        */
+        function createPoolComplete(xhr,status){
+            if(status!="success"){
+                divStatus.innerHTML="error sending request";
+                return;
+            }
+            divStatus=xhr.responseText;
+            var obj=JSON.parse(xhr.responseText);
+            if(obj.result==0){
+                divStatus.innerHTML=obj.message;
+            }else{
+                divStatus.innerHTML="Pool created";
+                }
+            window.location="userpage.html";
+
+            currentObject=null;
+        }
+        /**
+        *makes a AJAX call to server to add user
+        */
+    function createPool(){
+        var poolid = document.getElementById("poolid").value;
+        var departure = document.getElementById("departure").value;
+        var destination = document.getElementById("places").value;
+        var number = document.getElementById("number").value; 
+        var datedetails = document.getElementById("datedetails").value;
+        var price = document.getElementById("amount").value;
+        var creator = document.getElementById("creator").value;
+
+            $.ajax("createpool.php?poolid="+poolid+"&departure="+departure+"&destination="+destination+"&number="+number+"&datedetails="+datedetails+"&price="+price+"&creator="+creator,
+                {async:true,complete:createPoolComplete   }
+                );
+            }
+
+        </script>     
+    </body>
+</html>

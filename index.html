@@ -43,25 +43,25 @@
                                 </div>
                             </div>
                             <div class="form-bottom">
-                                <form role="form" action="" method="post" class="login-form">
+                                <form role="form" name="loginform" onSubmit="return validateForm();" action="index.html" method="post" class="login-form">
                                     <div class="form-group">
-                                        <label class="sr-only" for="form-username">Username</label>
-                                        <input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
+                                        <label class="sr-only" for="username">Username</label>
+                                        <input type="text" name="username" placeholder="Username..." class="username form-control" id="username">
                                     </div>
                                     <div class="form-group">
-                                        <label class="sr-only" for="form-password">Password</label>
-                                        <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+                                        <label class="sr-only" for="password">Password</label>
+                                        <input type="password" name="password" placeholder="Password..." class="password form-control" id="password">
                                     </div>
                                 </form>
                             </div>
-                            <a href ="welcomeuser.html"><button class="btn">Sign in!!</button></a>
+                            <button onclick="login()" class="btn">Sign in!!</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 social-login">
                             <p>New here? Sign up to use </p>
-                            <a href = "signup.html">
-                                <button type="submit" class="btn">Sign up!</button>
+                            <a href = "signup.php">
+                                <button class="btn">Sign up!</button>
                             </a>
                         </div>
                     </div>
@@ -79,6 +79,36 @@
         <script src="js/npm.js"></script>
         <script src="js/placeholder.js"></script>
         <script src="js/scripts.js"></script>
+        <script type="text/javascript">
+        function loginComplete(xhr,status){
+                if(status!="success"){
+                    divStatus.innerHTML="error sending request";
+                    return;
+                }
+                divStatus=xhr.responseText;
+                var obj=JSON.parse(xhr.responseText);
+                if(obj.result==0){
+                    divStatus=obj.message;
+                }else{
+                    divStatus.innerHTML= "Log in Success";
+                }
+                window.location="userpage.html";
+
+            currentObject=null;
+            }
+            
+            function login()
+            {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+
+                $.ajax("signin.php?username="+username+"&password="+password,
+                    {async:true,complete:loginComplete}
+                    );
+            }
+        
+        </script>
+
         
     </body>
 
