@@ -41,18 +41,6 @@
     <icon src="res/icons/wp8/Background.png" width="159" height="159" />
   </platform>
 
-  <!--<platform name="android">
-    <splash src="res/screens/android/screen-hdpi-landscape.png" density="land-hdpi"/>
-    <splash src="res/screens/android/screen-ldpi-landscape.png" density="land-ldpi"/>
-    <splash src="res/screens/android/screen-mdpi-landscape.png" density="land-mdpi"/>
-    <splash src="res/screens/android/screen-xhdpi-landscape.png" density="land-xhdpi"/>
-
-    <splash src="res/screens/android/screen-hdpi-portrait.png" density="port-hdpi"/>
-    <splash src="res/screens/android/screen-ldpi-portrait.png" density="port-ldpi"/>
-    <splash src="res/screens/android/screen-mdpi-portrait.png" density="port-mdpi"/>
-    <splash src="res/screens/android/screen-xhdpi-portrait.png" density="port-xhdpi"/>
-  </platform>-->
-
 <platform name="android">
     <splash src="ridealong.png" density="land-hdpi"/>
     <splash src="ridealong.png" density="land-ldpi"/>
@@ -70,6 +58,7 @@
     <splash src="res/screens/wp8/SplashScreenImage.png" width="768" height="1280"/>
   </platform>
   <plugin name="cordova-plugin-camera"  />
+  <plugin name="cordova-plugin-contacts"  />
   <plugin name="cordova-plugin-media-capture" />
   <plugin name="cordova-plugin-compat" />
   <plugin name="cordova-plugin-file"  />

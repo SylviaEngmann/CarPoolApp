@@ -131,7 +131,7 @@
         var price = document.getElementById("amount").value;
         var creator = document.getElementById("creator").value;
 
-            $.ajax("createpool.php?poolid="+poolid+"&departure="+departure+"&destination="+destination+"&number="+number+"&datedetails="+datedetails+"&price="+price+"&creator="+creator,
+            $.ajax("http://52.89.116.249/~sylvia.engmann/ridealong/createpool.php?poolid="+poolid+"&departure="+departure+"&destination="+destination+"&number="+number+"&datedetails="+datedetails+"&price="+price+"&creator="+creator,
                 {async:true,complete:createPoolComplete   }
                 );
             }

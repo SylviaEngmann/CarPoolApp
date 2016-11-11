@@ -115,7 +115,7 @@
             var password = document.getElementById("password").value; 
             var phonenumber = document.getElementById("telephone").value;
 
-            $.ajax("signup.php?firstname="+firstname+"&lastname="+lastname+
+            $.ajax("http://52.89.116.249/~sylvia.engmann/ridealong/signup.php?firstname="+firstname+"&lastname="+lastname+
                 "&username="+username+"&password="+password+"&phonenumber="+phonenumber, 
                 {async:true,complete:addUserComplete   }
                 );
