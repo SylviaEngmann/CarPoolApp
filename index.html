@@ -102,7 +102,7 @@
                 var username = document.getElementById("username").value;
                 var password = document.getElementById("password").value;
 
-                $.ajax("signin.php?username="+username+"&password="+password,
+                $.ajax("http://52.89.116.249/~sylvia.engmann/ridealong/signin.php?username="+username+"&password="+password,
                     {async:true,complete:loginComplete}
                     );
             }
