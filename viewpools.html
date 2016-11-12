@@ -61,7 +61,7 @@
                 var length = obj.pool.length;
                 var pools = obj.pool;
                 while(length>0){
-                    result+="<p id= 'from'>From: "+pools[length-1].departure+" To: "+pools[length-1].destination+"</p><p id='datedetails'>Date & Time: "+pools[length-1].datedetails+"</p><button onclick = 'pooljoin.html'></button>";
+                    result+="<p id= 'from'>From: "+pools[length-1].departure+" To: "+pools[length-1].destination+"</p><p id='datedetails'>Date & Time: "+pools[length-1].datedetails+"</p><div><a href="pooljoin.html"><button type="button" class="btn btn-round-xs">Join</button></a></div>";
                     length-=1;
                 }
                 
