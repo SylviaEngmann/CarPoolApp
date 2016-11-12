@@ -40,7 +40,11 @@
     <icon src="res/icons/wp8/ApplicationIcon.png" width="99" height="99" />          
     <icon src="res/icons/wp8/Background.png" width="159" height="159" />
   </platform>
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 9dbff3109445311b60ea8616847094089072bca5
 <platform name="android">
     <splash src="ridealong.png" density="land-hdpi"/>
     <splash src="ridealong.png" density="land-ldpi"/>
